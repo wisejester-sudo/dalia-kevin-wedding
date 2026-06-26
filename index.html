@@ -550,27 +550,39 @@ document.getElementById('rsvp-form').addEventListener('submit',function(e){
   if(!name){var el=document.getElementById('f-name');el.classList.add('err');el.focus();setTimeout(function(){el.classList.remove('err');},1200);return;}
   if(!attend)return;
 
+  var isYes=(attend===yesRadio);
+
+  // Arrival date is optional (the linked Google Form no longer marks any
+  // question as required, so a blank date still records fine). It's only sent
+  // when an attendee actually picks one; declines skip the detail fields entirely.
+  var arrival=document.getElementById('f-arrival').value; // YYYY-MM-DD
+
   var body=new URLSearchParams();
   body.append(FIELDS.attend,attend.value);
   body.append(FIELDS.name,name);
-  ['g1','g2','g3','g4'].forEach(function(id){body.append(FIELDS[id],document.getElementById(id).value.trim());});
 
-  // Arrival date — Google Forms wants split _year/_month/_day
-  var arrival=document.getElementById('f-arrival').value; // YYYY-MM-DD
-  if(arrival){
-    var parts=arrival.split('-');
-    body.append(FIELDS.arrival+'_year',  parts[0]);
-    body.append(FIELDS.arrival+'_month', String(parseInt(parts[1],10)));
-    body.append(FIELDS.arrival+'_day',   String(parseInt(parts[2],10)));
+  if(isYes){
+    ['g1','g2','g3','g4'].forEach(function(id){
+      var v=document.getElementById(id).value.trim();
+      if(v) body.append(FIELDS[id],v);
+    });
+
+    // Arrival date — Google Forms wants split _year/_month/_day
+    if(arrival){
+      var parts=arrival.split('-');
+      body.append(FIELDS.arrival+'_year',  parts[0]);
+      body.append(FIELDS.arrival+'_month', String(parseInt(parts[1],10)));
+      body.append(FIELDS.arrival+'_day',   String(parseInt(parts[2],10)));
+    }
+
+    // Group activity interest
+    var grpInt=document.querySelector('input[name="grpInterest"]:checked');
+    if(grpInt) body.append(FIELDS.grpInterest, grpInt.value);
+
+    // Which activity (only send if a real option chosen)
+    var act=document.getElementById('f-activity').value;
+    if(act) body.append(FIELDS.activity, act);
   }
-
-  // Group activity interest
-  var grpInt=document.querySelector('input[name="grpInterest"]:checked');
-  if(grpInt) body.append(FIELDS.grpInterest, grpInt.value);
-
-  // Which activity (only send if a real option chosen)
-  var act=document.getElementById('f-activity').value;
-  if(act) body.append(FIELDS.activity, act);
 
   // Submit to Google Forms. Use a hidden-iframe form POST as the primary method
   // — it works from file://, http://, and https:// alike and isn't blocked by CORS.
@@ -614,7 +626,6 @@ document.getElementById('rsvp-form').addEventListener('submit',function(e){
   }
 
   var gCount=['g1','g2','g3','g4'].filter(function(id){return document.getElementById(id).value.trim()!=='';} ).length;
-  var isYes=(attend===yesRadio);
   var es=(window._lang!=='en');
   var firstName=name.split(' ')[0];
 
