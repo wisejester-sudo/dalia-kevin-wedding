@@ -115,9 +115,31 @@ body{
 .det-poi-item .det-sub{margin-top:0;}
 .excursion-box{background:rgba(244,196,172,.07);border:1px solid rgba(244,196,172,.18);border-radius:8px;padding:clamp(14px,3.5vw,20px) clamp(16px,4vw,22px);margin-top:1.2rem;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(.82rem,2.2vw,.96rem);color:var(--cream);opacity:.9;line-height:1.7;}
 .excursion-box p+p{margin-top:.65em;}
-.reg-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(.95rem,2.8vw,1.15rem);color:var(--white);margin:1.1rem 0 1rem;line-height:1.4;}
-.reg-btn{display:inline-block;padding:clamp(10px,2.6vw,13px) clamp(22px,6vw,34px);border:1.5px solid var(--blush);border-radius:8px;color:var(--blush);text-decoration:none;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(.74rem,2.1vw,.84rem);letter-spacing:.2em;text-transform:uppercase;transition:background .2s,color .2s;}
-.reg-btn:hover{background:var(--blush);color:var(--navy);}
+.reg-lead{font-style:normal;font-weight:600;color:var(--white);}
+.reg-block{margin-top:clamp(22px,5vw,30px);padding-top:clamp(20px,4.5vw,26px);border-top:1px solid var(--line);}
+.reg-h{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.02rem,3vw,1.22rem);font-weight:600;color:var(--white);margin-bottom:.6rem;line-height:1.3;}
+.reg-label{margin-top:1.1rem;}
+.reg-cta{margin-top:.6rem;}
+.reg-btn{display:inline-flex;align-items:center;gap:.5em;padding:clamp(10px,2.6vw,13px) clamp(20px,5.5vw,30px);border:1.5px solid var(--blush);border-radius:8px;background:none;color:var(--blush);text-decoration:none;cursor:pointer;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(.74rem,2.1vw,.84rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:background .2s,color .2s;}
+.reg-btn:hover,.reg-btn.solid{background:var(--blush);color:var(--navy);}
+.reg-btn.solid:hover{opacity:.85;}
+.reg-toggle .chev{display:inline-block;transition:transform .3s;}
+.reg-toggle[aria-expanded="true"] .chev{transform:rotate(180deg);}
+.reg-bank{opacity:1;font-style:normal;}
+.reg-bank h4{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(.98rem,2.8vw,1.12rem);font-weight:600;color:var(--white);margin:0 0 .7rem;}
+.reg-bank h4~h4{margin-top:1.4rem;}
+.reg-bank p{font-style:italic;}
+.reg-bank a{color:var(--blush);word-break:break-word;}
+.reg-rows{display:grid;gap:.55rem;margin:.2rem 0 0;}
+.reg-rows div{display:grid;grid-template-columns:9.5rem 1fr;gap:.7rem;align-items:baseline;}
+.reg-rows dt{font-size:clamp(.6rem,1.6vw,.7rem);letter-spacing:.16em;text-transform:uppercase;color:var(--blush);opacity:.85;font-style:normal;}
+.reg-rows dd{margin:0;color:var(--white);font-style:normal;font-size:clamp(.9rem,2.5vw,1rem);display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .6rem;}
+.reg-num{letter-spacing:.04em;font-variant-numeric:tabular-nums;}
+.reg-copy{background:none;border:1px solid rgba(244,196,172,.5);border-radius:20px;color:var(--blush);font-family:'Cormorant Garamond',Georgia,serif;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;cursor:pointer;}
+.reg-copy:hover{background:rgba(244,196,172,.12);}
+@media(max-width:460px){.reg-rows div{grid-template-columns:1fr;gap:.1rem;}}
+.reg-sign{margin-top:1.4rem;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(.9rem,2.6vw,1.05rem);color:var(--blush);}
+.reg-sign span{display:block;font-family:'SunnLine',cursive,serif;font-style:normal;font-size:clamp(1.6rem,5.5vw,2.3rem);color:var(--white);margin-top:.4rem;}
 
 /* ── RSVP FORM ── */
 .fhead{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(.95rem,3vw,1.25rem);letter-spacing:.28em;text-transform:uppercase;color:var(--blush);text-align:center;margin-bottom:clamp(20px,5vw,30px);padding-left:.28em;}
@@ -351,12 +373,84 @@ body{
 
         <div class="det-section reveal">
           <span class="det-icon">🎁</span>
-          <h2 class="det-heading" data-es="Mesa de regalos" data-en="Gift Registry">Mesa de regalos</h2>
-          <div class="det-body">
-            <p data-es="Su presencia es nuestro mejor regalo. Si desean tener un detalle con nosotros, les compartimos nuestra mesa de regalos en Amazon." data-en="Your presence is the best gift we could ask for. If you'd like to give us something, here is our Amazon gift registry.">Su presencia es nuestro mejor regalo. Si desean tener un detalle con nosotros, les compartimos nuestra mesa de regalos en Amazon.</p>
+          <div class="reg-lang" data-lang-block="es">
+            <h2 class="det-heading">Nuestros próximos capítulos 🤍</h2>
+            <div class="det-body">
+              <p class="reg-lead">El regalo más especial para nosotros es poder compartir estos momentos con ustedes.</p>
+              <p>Su presencia, cariño y buenos deseos significan muchísimo para nosotros. No hay mejor regalo que tenerlos cerca y crear juntos recuerdos que nos acompañarán toda la vida.</p>
+              <p>Si desean tener un detalle adicional, hemos preparado estas opciones para quienes quieran acompañarnos en esta nueva etapa.</p>
+            </div>
+            <div class="reg-block">
+              <h3 class="reg-h">🏡 Nuestro próximo hogar</h3>
+              <div class="det-body"><p>Estamos comenzando un nuevo capítulo juntos, y cada pequeño detalle nos ayudará a convertir nuestra casa en un hogar lleno de amor, recuerdos y nuevas historias.</p></div>
+              <p class="det-sub reg-label">Mesa de regalos Amazon</p>
+              <p class="reg-cta"><a class="reg-btn solid" href="https://www.amazon.com.mx/wedding/share/DaliaKevin2027" target="_blank" rel="noopener">Ver nuestra mesa de regalos&nbsp;→</a></p>
+            </div>
+            <div class="reg-block">
+              <h3 class="reg-h">✈️ Honeymoon Fund | Nuestra luna de miel</h3>
+              <div class="det-body"><p>Como muchos saben, nos encanta viajar, descubrir nuevos lugares y vivir nuevas aventuras juntos.</p><p>Si desean contribuir a nuestra luna de miel, nos hará mucha ilusión llevar un pedacito de su cariño en nuestro próximo viaje.</p></div>
+              <p class="reg-cta"><button type="button" class="reg-btn reg-toggle" data-toggle="m-bank-es" aria-expanded="false" aria-controls="m-bank-es">Ver datos del Honeymoon Fund <span class="chev" aria-hidden="true">▾</span></button></p>
+              <div class="excursion-box reg-bank" id="m-bank-es" hidden>
+                <h4>Transferencias desde México 🇲🇽</h4>
+                <dl class="reg-rows"><div><dt>Beneficiario</dt><dd><span>Diana Dalia Torres Corona</span></dd></div><div><dt>Institución</dt><dd><span>Mercado Pago W</span></dd></div><div><dt>CLABE</dt><dd><span class="reg-num">722969010456327979</span> <button type="button" class="reg-copy" data-copy="722969010456327979" data-done="Copiado">Copiar</button></dd></div></dl>
+                <h4>Transferencias desde el extranjero 🌎</h4>
+                <p>Para enviar un regalo desde otro país, pueden consultar las empresas disponibles en: <a href="https://www.mercadopago.com.mx/enviar-dinero-a-mexico" target="_blank" rel="noopener">mercadopago.com.mx/enviar-dinero-a-mexico</a></p>
+                <p>Al realizar el envío, seleccionen <strong>Mercado Pago</strong> en la categoría de billeteras móviles y utilicen los siguientes datos:</p>
+                <dl class="reg-rows"><div><dt>Beneficiario</dt><dd><span>Diana Dalia Torres Corona</span></dd></div><div><dt>Teléfono</dt><dd><span class="reg-num">+52 722 381 1386</span> <button type="button" class="reg-copy" data-copy="+52 722 381 1386" data-done="Copiado">Copiar</button></dd></div><div><dt>Ciudad</dt><dd><span>Toluca, Estado de México</span></dd></div><div><dt>CLABE</dt><dd><span class="reg-num">722969010456327979</span> <button type="button" class="reg-copy" data-copy="722969010456327979" data-done="Copiado">Copiar</button></dd></div></dl>
+              </div>
+            </div>
+            <div class="reg-block">
+              <h3 class="reg-h">💌 También durante nuestra celebración</h3>
+              <div class="det-body"><p>En ambas celebraciones tendremos un pequeño espacio de buenos deseos, donde podrán dejarnos un mensaje en nuestro libro de recuerdos y encontrar la información de nuestra mesa de regalos y Honeymoon Fund.</p></div>
+            </div>
+            <div class="reg-block reg-close">
+              <div class="det-body">
+                <p class="reg-lead">Pero, sobre todo, queremos que sepan algo: su presencia es y siempre será nuestro regalo más importante.</p>
+                <p>Sabemos que muchos harán un gran esfuerzo para acompañarnos, especialmente quienes viajarán desde otras ciudades o países. Para nosotros, compartir estos momentos con ustedes vale muchísimo más que cualquier regalo.</p>
+                <p>Gracias por formar parte de nuestra historia y de todos los capítulos que están por venir.</p>
+              </div>
+              <p class="reg-sign">Con todo nuestro cariño,<span>Dalia &amp; Kevin 🤍</span></p>
+            </div>
           </div>
-          <p class="reg-name" data-es="Mesa de Regalos de Dalia Torres y Kevin Marsh" data-en="Dalia Torres &amp; Kevin Marsh's Gift Registry">Mesa de Regalos de Dalia Torres y Kevin Marsh</p>
-          <a class="reg-btn" href="https://www.amazon.com.mx/wedding/share/DaliaKevin2027" target="_blank" rel="noopener" data-es="Ver mesa de regalos" data-en="View registry">Ver mesa de regalos</a>
+          <div class="reg-lang" data-lang-block="en" hidden>
+            <h2 class="det-heading">Our Next Chapters 🤍</h2>
+            <div class="det-body">
+              <p class="reg-lead">The greatest gift of all is having you celebrate these special moments with us.</p>
+              <p>Your presence, love, and warm wishes mean the world to us. Nothing could be more meaningful than sharing these memories with the people we love.</p>
+              <p>If you&#39;d like to give us a little something extra, we&#39;ve put together these options for anyone who wishes to be part of our next chapter.</p>
+            </div>
+            <div class="reg-block">
+              <h3 class="reg-h">🏡 Our Future Home</h3>
+              <div class="det-body"><p>As we begin building our life together, every thoughtful gift will help us turn our house into a home filled with love, memories, and new stories.</p></div>
+              <p class="det-sub reg-label">Amazon Wedding Registry</p>
+              <p class="reg-cta"><a class="reg-btn solid" href="https://www.amazon.com.mx/wedding/share/DaliaKevin2027" target="_blank" rel="noopener">View Our Registry&nbsp;→</a></p>
+            </div>
+            <div class="reg-block">
+              <h3 class="reg-h">✈️ Honeymoon Fund</h3>
+              <div class="det-body"><p>As many of you know, we love traveling, discovering new places, and creating unforgettable memories together.</p><p>If you&#39;d like to contribute to our honeymoon, we&#39;d be delighted to carry a little piece of your love and generosity into our next adventure.</p></div>
+              <p class="reg-cta"><button type="button" class="reg-btn reg-toggle" data-toggle="m-bank-en" aria-expanded="false" aria-controls="m-bank-en">View Honeymoon Fund details <span class="chev" aria-hidden="true">▾</span></button></p>
+              <div class="excursion-box reg-bank" id="m-bank-en" hidden>
+                <h4>Transfers from Mexico 🇲🇽</h4>
+                <dl class="reg-rows"><div><dt>Beneficiary</dt><dd><span>Diana Dalia Torres Corona</span></dd></div><div><dt>Financial Institution</dt><dd><span>Mercado Pago W</span></dd></div><div><dt>CLABE (Bank Account Number)</dt><dd><span class="reg-num">722969010456327979</span> <button type="button" class="reg-copy" data-copy="722969010456327979" data-done="Copied">Copy</button></dd></div></dl>
+                <h4>International Transfers 🌎</h4>
+                <p>For guests sending a gift from abroad, please check the available transfer providers at: <a href="https://www.mercadopago.com.mx/enviar-dinero-a-mexico" target="_blank" rel="noopener">mercadopago.com.mx/enviar-dinero-a-mexico</a></p>
+                <p>When making your transfer, select <strong>Mercado Pago</strong> under the mobile wallets category and use the following recipient details:</p>
+                <dl class="reg-rows"><div><dt>Recipient</dt><dd><span>Diana Dalia Torres Corona</span></dd></div><div><dt>Phone</dt><dd><span class="reg-num">+52 722 381 1386</span> <button type="button" class="reg-copy" data-copy="+52 722 381 1386" data-done="Copied">Copy</button></dd></div><div><dt>City</dt><dd><span>Toluca, Estado de México</span></dd></div><div><dt>CLABE</dt><dd><span class="reg-num">722969010456327979</span> <button type="button" class="reg-copy" data-copy="722969010456327979" data-done="Copied">Copy</button></dd></div></dl>
+              </div>
+            </div>
+            <div class="reg-block">
+              <h3 class="reg-h">💌 A Little Something at Our Celebrations</h3>
+              <div class="det-body"><p>At both celebrations, we&#39;ll also have a special wishes station where you can leave us a heartfelt message in our guest book and find information about our wedding registry and Honeymoon Fund.</p></div>
+            </div>
+            <div class="reg-block reg-close">
+              <div class="det-body">
+                <p class="reg-lead">Above all, please know that your presence will always be the most meaningful gift to us.</p>
+                <p>We know that many of you are making a special effort to celebrate with us, especially those traveling from other cities or countries. Sharing these moments with you means far more to us than any material gift ever could.</p>
+                <p>Thank you for being part of our story and all the wonderful chapters still to come.</p>
+              </div>
+              <p class="reg-sign">With all our love,<span>Dalia &amp; Kevin 🤍</span></p>
+            </div>
+          </div>
         </div>
 
         <div class="rsvp-cta reveal">
@@ -505,8 +599,19 @@ function setLang(lang){
   });
   document.documentElement.lang=lang;
   document.title=lang==='en'?'Dalia & Kevin · February 6, 2027':'Dalia & Kevin · 6 Febrero 2027';
+  document.querySelectorAll('[data-lang-block]').forEach(function(el){ el.hidden = el.getAttribute('data-lang-block')!==lang; });
   window._lang=lang;
 }
+
+// ── GIFTS: honeymoon details toggle + copy buttons ─────────
+document.querySelectorAll('[data-toggle]').forEach(function(b){ b.addEventListener('click',function(){
+  var el=document.getElementById(b.getAttribute('data-toggle')), open=el.hidden; el.hidden=!open; b.setAttribute('aria-expanded',String(open)); }); });
+document.querySelectorAll('[data-copy]').forEach(function(b){ b.addEventListener('click',function(){
+  var txt=b.getAttribute('data-copy'), orig=b.textContent;
+  var t=document.createElement('textarea'), ok=false; t.value=txt; t.setAttribute('readonly',''); t.style.position='fixed'; t.style.opacity='0'; document.body.appendChild(t); t.select();
+  try{ ok=document.execCommand('copy'); }catch(e){} t.remove();
+  if(!ok&&navigator.clipboard){ navigator.clipboard.writeText(txt).catch(function(){}); }
+  b.textContent=b.getAttribute('data-done'); setTimeout(function(){ b.textContent=orig; },1800); }); });
 
 // ── SCROLL REVEAL ──────────────────────────────────────────
 function initReveal(){
